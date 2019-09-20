@@ -26,6 +26,12 @@ Change directory to this project.
 $ cd classify_qiita_items
 ```
 
+You must get Qiita access token and write it in TOKEN_FILE.
+
+```
+$ echo "<YOUR_QIITA_ACCESS_TOKEN>" > TOKEN_FILE
+```
+
 Execute main program.
 
 ```
