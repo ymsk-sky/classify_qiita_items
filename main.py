@@ -3,9 +3,15 @@
 import http.client
 import json
 
+TOKEN = "45c1c119b39cb1fb359a3f9acc8024939a13a4a0"
+
 def main():
+    headers = {
+        "Authorization": "Bearer " + TOKEN
+    }
+
     connection = http.client.HTTPSConnection("qiita.com", 443)
-    connection.request("GET", "/api/v2/items")
+    connection.request("GET", "/api/v2/items", headers=headers)
 
     response = connection.getresponse()
 
