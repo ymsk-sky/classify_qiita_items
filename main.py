@@ -3,11 +3,16 @@
 import http.client
 import json
 
-TOKEN = "45c1c119b39cb1fb359a3f9acc8024939a13a4a0"
+def get_token():
+    token_file = open("./TOKEN_FILE", "r")
+    token = token_file.readline()
+    token_file.close()
+    return token
 
 def main():
+    token = get_token()
     headers = {
-        "Authorization": "Bearer " + TOKEN
+        "Authorization": "Bearer " + token
     }
 
     connection = http.client.HTTPSConnection("qiita.com", 443)
