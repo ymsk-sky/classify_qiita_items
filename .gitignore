@@ -1,2 +1,5 @@
 # アクセストークン記述ファイル
 TOKEN_FILE
+
+# 収集したデータ
+articles.csv

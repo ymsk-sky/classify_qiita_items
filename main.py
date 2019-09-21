@@ -2,6 +2,7 @@
 
 import http.client
 import json
+import csv
 
 def get_token():
     token_file = open("./TOKEN_FILE", "r")
@@ -23,14 +24,21 @@ def main():
     data = response.read().decode("utf-8")
     json_data = json.loads(data)
 
+    articles_file_name = "articles.csv"
+    articles_file = open(articles_file_name, 'w')
+    articles_csv = csv.writer(articles_file, lineterminator='\n')
+
     for num in range(len(json_data)):
         created_at = json_data[num]['created_at']
         title = json_data[num]['title']
         url = json_data[num]['url']
         user_id = json_data[num]['user']['id']
         user_name = json_data[num]['user']['name']
-        
-        print(title)
+
+        article = [title, created_at, user_id, user_name, url]
+        articles_csv.writerow(article)
+
+    articles_file.close()    
 
 if __name__ == "__main__":
     main()
